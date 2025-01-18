@@ -75,5 +75,5 @@ input, textarea {
 article {
     grid-row: span 3;
     grid-template-rows: subgrid;
-    gap: 1em
+    gap: 2em
 }
