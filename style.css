@@ -17,8 +17,9 @@ nav a {
     flex: 1;
     text-align: center;
     text-decoration: none;
-    padding: 10px;
-    color: black;
+    padding: 0.5em;
+    color: inherit;
+    margin-bottom: 10px;
 }
 
 nav a.current {
