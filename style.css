@@ -51,7 +51,8 @@ label, input, textarea, button {
 
 input, textarea, button {
     box-sizing: border-box;
-    width: 100%
+    width: 100%;
+    font: inherit;
 }
 
 label {
