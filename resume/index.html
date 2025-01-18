@@ -8,38 +8,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.6;       
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f9f9f9;
             color: #333;
-        }
-    
-        nav {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            background-color: #007acc;
-            padding: 10px;
-            border-radius: 8px;
-        }
-    
-        nav a {
-            text-decoration: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-    
-        nav a.current {
-            background-color: white;
-            color: #007acc;
-            font-weight: bold;
-        }
-    
-        nav a:hover {
-            background-color: #005ea8;
         }
     
         header {
@@ -64,8 +38,8 @@
         section h2 {
             font-size: 1.8em;
             color: #007acc;
-            border-bottom: 2px solid #007acc;
-            padding-bottom: 5px;
+            border-bottom: 2px var(--color-accent);
+            padding-bottom: 5px;    
             margin-bottom: 15px;
         }
     
@@ -84,12 +58,12 @@
         }
     
         a {
-            color: #007acc;
+            color: var(--color-accent);
             text-decoration: underline;
         }
     
         a:hover {
-            color: #005ea8;
+            color: var(--color-accent);
         }
     </style>
 </head>
