@@ -41,4 +41,5 @@ nav a.current {
 
 nav a:hover {
     background-color: lightgray;  
+    border-bottom-color: var(--color-accent);
 }
