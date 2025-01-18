@@ -43,3 +43,17 @@ nav a:hover {
     background-color: lightgray;  
     border-bottom-color: var(--color-accent);
 }
+
+label, input, textarea, button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, textarea, button {
+    box-sizing: border-box;
+    width: 100%
+}
+
+label {
+    margin-block: 10px  ;
+}
