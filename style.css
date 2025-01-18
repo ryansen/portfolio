@@ -44,17 +44,25 @@ nav a:hover {
     border-bottom-color: var(--color-accent);
 }
 
-label, input, textarea, button {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input, textarea, button {
-    box-sizing: border-box;
-    width: 100%;
-    font: inherit;
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+    margin: 20px;
 }
 
 label {
-    margin-block: 10px  ;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+}
+
+button {
+    grid-column: 1 / -1;
+    justify-self: center;
+}       
+
+input, textarea {
+    width: 100%;
+    box-sizing: border-box;
 }
