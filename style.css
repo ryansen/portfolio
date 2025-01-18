@@ -21,13 +21,17 @@ nav a {
     color: inherit;
     margin-bottom: 10px;
     border-bottom-width: 1px;
-    border-bottom-style: solid
-    border-bottom-color: oklch(80% 3% 200);
+    border-bottom-style: solid;
+    border-bottom-color: oklch(80% 3% 200); 
 }
 
 nav a.current {
     font-weight: bold; 
     color: black;
+    border-bottom-width: 0.4em;
+    border-bottom-style: solid;
+    border-bottom-color: oklch(80% 3% 200); 
+    padding-bottom: 2px;
 }
 
 nav a:hover {
