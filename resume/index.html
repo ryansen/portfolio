@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="module" src="../global.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
     <style>
+        :root {
+            --background-color: canvas;
+            --text-color: canvastext;
+            --heading-color: canvastext;
+            --accent-color: purple;
+            --border-color: purple;
+        }
+    
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;       
+            line-height: 1.6;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--background-color); 
+            color: var(--text-color); 
         }
-        
-        header {    
+    
+        header {
             text-align: center;
             margin-bottom: 30px;
-        }   
+        }
     
         header h1 {
             font-size: 2.5em;
             margin-bottom: 0.2em;
+            color: var(--heading-color); 
         }
     
         header p {
             font-size: 1.2em;
-            color: #555;
+            color: var(--text-color);
         }
     
         section {
@@ -37,20 +47,20 @@
     
         section h2 {
             font-size: 1.8em;
-            color: black;
-            border-bottom: 2px var(--color-accent);
-            padding-bottom: 5px;    
+            color: var(--heading-color); 
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
             margin-bottom: 15px;
         }
-        
+    
         b {
             font-size: 1.1em;
-            color: #333;
+            color: var(--text-color); 
         }
     
         p {
             margin: 5px 0;
-            color: #555;
+            color: var(--text-color);
         }
     
         div {
@@ -58,23 +68,14 @@
         }
     
         a {
-            color: var(--color-accent);
+            color: var(--accent-color); 
             text-decoration: underline;
         }
     
-        a:hover {
-            color: var(--color-accent);
-        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/portfolio/">Portfolio</a> 
-        <a href="https://ryansen.github.io/portfolio/projects/">Projects</a> 
-        <a href="https://ryansen.github.io/portfolio/contact/">Contact</a> 
-        <a href="https://ryansen.github.io/portfolio/resume/"class="current" display=: flex>Resume</a> 
-        <a href="https://github.com/ryansen" target="_blank">Github</a>
-    </nav>
+
     <header>
         <h1>Ryan Lee</h1>
         <p>2nd Year Data Science Major at UCSD</p>

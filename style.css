@@ -1,21 +1,22 @@
 html {
     --color-accent: purple;
     accent-color: var(--color-accent);
+    color-scheme: light dark;
+    border-bottom-color: var(--border-color);
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */ 
+
     max-width: 100ch;
     font: 100%/1.5 system-ui;
     margin-inline: auto;
     padding-left: 5px;  
-    padding: up 10px;
-  }
+    padding: 10px;
+}
 
 nav {
     display: flex;
+    --border-color: oklch(50% 10% 200 / 40%);
 }
 
 nav a {
@@ -27,20 +28,20 @@ nav a {
     margin-bottom: 10px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200); 
+    border-bottom-color: var(--border-color);
 }
 
 nav a.current {
     font-weight: bold; 
-    color: black;
+    color: black white;
     border-bottom-width: 0.4em;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80% 3% 200); 
+    border-bottom-color: var(--border-color);
     padding-bottom: 2px;
 }
 
 nav a:hover {
-    background-color: lightgray;  
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
     border-bottom-color: var(--color-accent);
 }
 
@@ -77,4 +78,18 @@ article {
     grid-row: span 3;
     grid-template-rows: subgrid;
     gap: 2em
+}
+
+.color-scheme {
+    position: absolute; 
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+    font-family: inherit;
+    z-index: 10;
+}
+  
+select {
+    padding: 0.2rem;
+    font-size: inherit;
 }
