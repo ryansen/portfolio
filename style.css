@@ -93,3 +93,27 @@ select {
     padding: 0.2rem;
     font-size: inherit;
 }
+
+#profile-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  #profile-stats dl {
+    margin: 0;
+  }
+  
+  #profile-stats dt {
+    font-weight: bold;
+    color: gray;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  
+  #profile-stats dd {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
