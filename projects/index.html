@@ -5,8 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Styling for pie chart container */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center elements */
+            gap: 10px; /* Add spacing between chart and legend */
+        }
+
+        /* Styling for legend */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .legend li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend .swatch {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: var(--color);
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+        <ul class="legend" flex: 1></ul>
+    </div>
+
     <h1 class="projects-title" style="font-size: 36px;">Projects (<span id="project-count">0</span>)</h1>
     <div class="projects"></div>
     <script src="../global.js" type="module"></script>

@@ -7,21 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryan Lee: Personal site and portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <h1> Ryan Lee </h1>
-    <div></div>
     <p> 2nd Year Data Science Major at UCSD</p>
-    <div></div>
-    <img src="images/bread_cat.jpg" alt="cat wearing slice of bread"
-        width="300"
-        length="300">
-    <h2>Latest Projects</h2>
-    <div class="projects">
-        <!-- Dynamically added content will appear here -->
+    <img src="images/bread_cat.jpg" alt="cat wearing slice of bread" width="300" height="300">
+
+    <!-- Container for Pie Chart & Legend -->
+    <div class="chart-container">
+        <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+        <ul class="legend" flex: 1></ul>
     </div>
+
+    <h2>Latest Projects</h2>
+    <div class="projects"></div>
+
     <h2>My GitHub Stats</h2>
     <div id="profile-stats"></div>
-    
 </body>
 </html>

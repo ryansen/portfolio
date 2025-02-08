@@ -1,22 +1,21 @@
-html {
+:root {
     --color-accent: purple;
-    accent-color: var(--color-accent);
+    --border-color: oklch(50% 10% 200 / 40%);
+}
+
+html {
     color-scheme: light dark;
-    border-bottom-color: var(--border-color);
 }
 
 body {
-
     max-width: 100ch;
     font: 100%/1.5 system-ui;
     margin-inline: auto;
-    padding-left: 5px;  
     padding: 10px;
 }
 
 nav {
     display: flex;
-    --border-color: oklch(50% 10% 200 / 40%);
 }
 
 nav a {
@@ -26,17 +25,13 @@ nav a {
     padding: 0.5em;
     color: inherit;
     margin-bottom: 10px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav a.current {
-    font-weight: bold; 
-    color: black white;
-    border-bottom-width: 0.4em;
-    border-bottom-style: solid;
-    border-bottom-color: var(--border-color);
+    font-weight: bold;
+    color: black;
+    border-bottom: 0.4em solid var(--border-color);
     padding-bottom: 2px;
 }
 
@@ -45,87 +40,122 @@ nav a:hover {
     border-bottom-color: var(--color-accent);
 }
 
-form {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1em;
-    margin: 20px;
+/* Pie Chart Styling */
+#projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
+}   
+
+/* Highlight hovered wedge */   
+svg:has(path:hover) path:not(:hover) {  
+    opacity: 0.5;   
+}   
+
+/* Smooth transition */ 
+path {  
+    transition: 300ms;
+    cursor: pointer;
 }
 
-label {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: 1 / -1;
+/* Highlight selected wedge and legend */
+.selected {
+    --color: #ff9800 !important;
 }
 
-button {
-    grid-column: 1 / -1;
-    justify-self: center;
-}       
+.selected path {
+    fill: var(--color);
+}
 
-input, textarea {
-    width: 100%;
-    box-sizing: border-box;
+.selected li {
+    font-weight: bold;
+    text-decoration: underline;
+    color: var(--color);
+}
+
+/* Legend styling */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend .swatch {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--color);
 }
 
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 2em;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Dynamic columns */
+    gap: 2em; /* Restore spacing */
+    padding: 1em; /* Add padding for better spacing */
 }
 
-article {
-    grid-row: span 3;
-    grid-template-rows: subgrid;
-    gap: 2em
+/* Pie Chart Styling */
+#projects-pie-plot {
+    max-width: 20em;
+    margin-block: 2em;
 }
 
-.color-scheme {
-    position: absolute; 
-    top: 1rem;
-    right: 1rem;
-    font-size: 80%;
-    font-family: inherit;
-    z-index: 10;
-}
-  
-select {
-    padding: 0.2rem;
-    font-size: inherit;
+/* Highlight hovered wedge */
+svg:has(path:hover) path:not(:hover) {
+    opacity: 0.5;
 }
 
-#profile-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four equal columns */
-    gap: 1rem;
-    text-align: center;
-  }
-  
-  #profile-stats dl {
-    margin: 0;
-  }
-  
-  #profile-stats dt {
+/* Smooth transition */
+path {
+    transition: 300ms;
+    cursor: pointer;
+}
+
+/* Highlight selected wedge and legend */
+.selected {
+    --color: #ff9800 !important;
+}
+
+.selected path {
+    fill: var(--color) !important;
+}
+
+.selected li {
     font-weight: bold;
-    color: gray;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-  }
-  
-  #profile-stats dd {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-.project-content {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    text-decoration: underline;
+    color: var(--color);
 }
 
-.project-year {
-  font-style: italic;
-  color: #666;
-  font-size: 0.9em;
+/* Legend styling */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.legend .swatch {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--color);
 }
