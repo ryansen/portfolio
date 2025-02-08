@@ -94,21 +94,40 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   containerElement.innerHTML = ''; // Clear previous content
 
   projects.forEach(project => {
-    if (!project.title || !project.description) {
-      console.warn('Skipping project due to missing title or description:', project);
+    if (!project.title || !project.description || !project.year) {
+      console.warn('Skipping project due to missing title, description, or year:', project);
       return;
     }
 
     const article = document.createElement('article');
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      ${project.image ? `<img src="${project.image}" alt="${project.title}">` : ''}
-      <p>${project.description}</p>
-    `;
+
+    const titleElement = document.createElement(headingLevel);
+    titleElement.textContent = project.title;
+
+    const imageElement = project.image
+      ? `<img src="${project.image}" alt="${project.title}">`
+      : '';
+
+    const contentWrapper = document.createElement('div'); // Wrapper for description and year
+    contentWrapper.classList.add('project-content');
+
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = project.description;
+
+    const yearElement = document.createElement('span');
+    yearElement.classList.add('project-year');
+    yearElement.textContent = `Year: ${project.year}`;
+
+    contentWrapper.appendChild(descriptionElement);
+    contentWrapper.appendChild(yearElement);
+
+    article.innerHTML = `${imageElement}`;
+    article.appendChild(titleElement);
+    article.appendChild(contentWrapper);
+
     containerElement.appendChild(article);
   });
 }
-
 export async function fetchGitHubData(username) {
   try {
     const url = `https://api.github.com/users/${username}`;

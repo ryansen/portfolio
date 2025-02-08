@@ -117,3 +117,15 @@ select {
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.project-year {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9em;
+}
