@@ -20,14 +20,13 @@ let projectCountElement = document.getElementById('project-count');
     renderPieChart(projects);
 })();
 
-// Render Pie Chart
 function renderPieChart(projectsGiven) {
     if (!projectsGiven || projectsGiven.length === 0) {
         console.warn("No projects available for visualization.");
         return;
     }
 
-    // Aggregate projects by year
+    // Aggregate filtered projects by year
     let newData = d3.rollups(
         projectsGiven,
         (v) => v.length,
@@ -43,7 +42,7 @@ function renderPieChart(projectsGiven) {
     let arcData = pieGenerator(newData);
 
     let svg = d3.select('#projects-pie-plot');
-    svg.selectAll("*").remove();
+    svg.selectAll("*").remove(); // Clear previous pie chart
 
     let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -61,29 +60,15 @@ function renderPieChart(projectsGiven) {
             let clickedIndex = newData.findIndex(item => item.label === d.data.label);
             selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
             updateSelection(slices, legendItems, colors, newData);
-            updateProjectDisplay(newData);
+            renderProjects(filterProjects(), projectsContainer, 'h2');
         });
 
     // Generate legend
     let legend = d3.select('.legend');
-    legend.selectAll('li').remove();
+    legend.selectAll('*').remove(); // Clear previous legend
 
     let legendItems = legend.selectAll('li')
-        .data(newData)
-        .enter()
-        .append('li')
-        .attr('style', (d, idx) => `--color:${colors(idx)}`)
-        .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
-        .on('click', function (event, d) {
-            let clickedIndex = newData.findIndex(item => item.label === d.label);
-            selectedIndex = selectedIndex === clickedIndex ? -1 : clickedIndex;
-            updateSelection(slices, legendItems, colors, newData);
-            updateProjectDisplay(newData);
-        });
-
-    // Initial selection state
-    updateSelection(slices, legendItems, colors, newData);
-}
+       
 
 // Update selection state (highlights the selected wedge & legend)
 function updateSelection(slices, legendItems, colors, data) {
