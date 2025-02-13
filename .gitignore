@@ -1,0 +1,9 @@
+meta/loc.csv
+
+# Ignore dependencies
+node_modules/
+
+# Ignore system and editor files
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,43 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your main branch is named differently
+  pull_request:
+
+permissions:
+  contents: write  # Allows GitHub Actions to commit the updated CSV file
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'  # Fetches full commit history
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Adjust version if needed
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Elocuent
+        run: npx elocuent -d . -o meta/loc.csv
+
+      - name: Commit and Push CSV Update
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          mkdir -p meta
+          git pull --rebase
+          git add -f meta/loc.csv
+          git commit -m "Update code statistics" || echo "No changes to commit"
+          git push

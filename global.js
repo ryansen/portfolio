@@ -11,6 +11,7 @@ let pages = [
   { url: 'https://ryansen.github.io/portfolio/projects/', title: 'Projects' },
   { url: 'https://ryansen.github.io/portfolio/resume/', title: 'Resume' },
   { url: 'https://ryansen.github.io/portfolio/contact/', title: 'Contact' },
+  { url: 'https://ryansen.github.io/portfolio/meta/', title: 'Meta' },
   { url: 'https://github.com/ryansen', title: 'Github' },
 ];
 
