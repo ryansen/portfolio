@@ -45,7 +45,6 @@ if (profileStats) {
     `;
 }
 
-
 (async function () {
     const githubData = await fetchGitHubData();
     console.log('GitHub Data:', githubData); // Check if this logs the fetched GitHub data

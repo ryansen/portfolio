@@ -10,7 +10,7 @@ let xScale, yScale, brushSelection = null;
 // Load CSV Data
 async function loadData() {
   try {
-    data = await d3.csv('loc.csv', (row) => ({
+    data = await d3.csv('../meta/loc.csv', (row) => ({
       ...row,
       line: +row.line || 0,
       depth: +row.depth || 0,
@@ -19,8 +19,7 @@ async function loadData() {
       datetime: row.datetime ? new Date(row.datetime) : null,
       file: row.file || "Unknown"
     }));
-    
-    data = await d3.csv('https://raw.githubusercontent.com/ryansen/portfolio/main/meta/loc.csv');
+
     if (!data.length) throw new Error("CSV file is empty or could not be read");
 
     console.log("Loaded Data:", data);
