@@ -20,6 +20,7 @@ async function loadData() {
       file: row.file || "Unknown"
     }));
     
+    data = await d3.csv('https://raw.githubusercontent.com/ryansen/portfolio/main/meta/loc.csv');
     if (!data.length) throw new Error("CSV file is empty or could not be read");
 
     console.log("Loaded Data:", data);
