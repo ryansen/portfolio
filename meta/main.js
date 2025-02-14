@@ -19,7 +19,7 @@ async function loadData() {
       datetime: row.datetime ? new Date(row.datetime) : null,
       file: row.file || "Unknown"
     }));
-
+    
     if (!data.length) throw new Error("CSV file is empty or could not be read");
 
     console.log("Loaded Data:", data);
