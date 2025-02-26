@@ -6,10 +6,10 @@
         "description": "Analysis on 2022 Database of League of Legends Top Lane Pro Players"
     },
     {
-        "title": "Rain: The Secret Behind Car Crashes",
+        "title": "Bike Traffic Visualiation of Boston",
         "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Visualization of Rain and Car Crash Data"
+        "image": "https://media.discordapp.net/attachments/640096810475716640/1344183150275989554/image.png?ex=67bffb9c&is=67beaa1c&hm=76386eb1d27d2e00e6e60f69daf907ba70aaa3f79c0ba9112881ab5e51dcfc9f&=&format=webp&quality=lossless&width=487&height=350",
+        "description": "Traffic Map for Bikes"
     },
     {
         "title": "KNN Image Classifier",
@@ -18,10 +18,10 @@
         "description": "Developed a K-Nearest Neighbors (KNN) image classifier for the MNIST dataset using a priority queue to identify the closest matches. Achieved accurate predictions of handwritten digit labels based on similarity to training data."
     },
     {
-        "title": "Aperiam ducimus quia error!",
-        "year": "2020",
+        "title": "Rain: The Secret Behind Car Crashes",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Possimus neque incidunt a debitis. Harum mollitia eum eius, cumque aperiam ex atque, cum laboriosam adipisci ab velit hic voluptas molestiae aspernatur illo ipsum iure at eos. Eos, atque quos."
+        "description": "Visualization of Rain and Car Crash Data"
     },
     {
         "title": "Vitae expedita recusandae laborum.",
