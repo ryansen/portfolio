@@ -250,3 +250,75 @@ path {
   circle.selected {
     fill: #ff6b6b;
   }
+
+ /* Center the filter UI and align elements horizontally */
+#filter-ui {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px; /* Adjust width as needed */
+  margin: 20px auto; /* Centering */
+}
+
+/* Ensure label stays on the left */
+#filter-ui label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Style the time display to align right */
+#selected-time {
+  margin-left: auto; /* Push it all the way to the right */
+  font-size: 14px; /* Make the font slightly smaller */
+  font-family: "Arial", sans-serif;
+  color: #333;
+  background: white;
+  padding: 3px 6px; /* Reduce padding for a smaller box */
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the slider */
+#time-slider {
+  flex: 1; /* Allow it to expand */
+  -webkit-appearance: none; /* Fix for Safari */
+  appearance: none;
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer; /* Ensure it's draggable */
+  transition: background 0.3s;
+}
+
+/* Slider thumb (handle) */
+#time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Fix for Safari */
+  appearance: none;
+  width: 14px; /* Slightly smaller */
+  height: 14px;
+  background: #007bff; /* Blue color */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+#time-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+/* Hover effect on slider */
+#time-slider:hover {
+  background: #ccc;
+}
+
+#time-slider:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+  background: #0056b3; /* Slightly darker on click */
+}

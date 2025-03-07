@@ -3,6 +3,9 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 let data = [];
 let commits = [];
+let selectedCommits = [];
+let commitProgress = 100;
+
 const width = 1000;
 const height = 600;
 const margin = { top: 50, right: 30, bottom: 50, left: 70 }; // Increased bottom and top margins
@@ -27,6 +30,30 @@ async function loadData() {
     processCommits();
     displayStats();
     visualizeTimeAndDay();
+    try {
+      data = await d3.csv('../meta/loc.csv', (row) => ({
+          ...row,
+          datetime: row.datetime ? new Date(row.datetime) : null
+      }));
+
+      if (!data.length) throw new Error("CSV file is empty or could not be read");
+
+      processCommits();
+
+      if (commits.length > 0) {
+          timeScale = d3.scaleTime()
+              .domain([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)])
+              .range([0, 100]);
+
+          commitMaxTime = timeScale.invert(commitProgress);
+      } else {
+          console.error("No valid commits found.");
+      }
+
+      updateSelectedTime();
+  } catch (error) {
+      console.error("Error loading CSV:", error);
+  }
   } catch (error) {
     console.error("Error loading CSV:", error);
   }
@@ -64,6 +91,10 @@ function processCommits() {
 
   console.log("Processed Commits:", commits);
 }
+
+let timeScale = d3.scaleTime([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)], [0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
 
 // Display stats using D3
 function displayStats() {
@@ -424,6 +455,31 @@ function brushSelector() {
        .style("font-size", "16px")
        .text("Time of Day (Hour)");
   }
+
+function updateSelectedTime() {
+    if (!timeScale) {
+        console.error("Time scale is not initialized yet.");
+        return;
+    }
+
+    commitMaxTime = timeScale.invert(commitProgress);
+
+    const selectedTime = d3.select('#selected-time');
+
+    if (commitMaxTime && !isNaN(commitMaxTime.getTime())) {
+        selectedTime.text(commitMaxTime.toLocaleString());
+    } else {
+        selectedTime.text("No valid date");
+        console.error("Invalid Date computed:", commitMaxTime);
+    }
+}
+
+d3.select("#time-slider").on("input", function () {
+    commitProgress = +this.value;
+    updateSelectedTime(); // Ensure the displayed time updates dynamically
+});
+
+
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
   createScatterplot();

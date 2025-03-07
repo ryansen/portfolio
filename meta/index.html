@@ -14,6 +14,11 @@
     <h1> Meta </h1>
     <div></div>
     <div id="stats"></div>
+    <div id="filter-ui">
+      <label for="time-slider">Show commits until:</label>
+      <input type="range" id="time-slider" min="0" max="100" value="100">
+      <time id="selected-time"></time>
+    </div>
     <h2>Commits by time of day</h2>
     <div id="chart"></div>
     <div></div>
