@@ -183,7 +183,22 @@ path {
     font-size: 1rem;
   }
 /* Tooltip Styling */
-
+.tooltip {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    color: black; /* Text color */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+    display: none; /* Initially hidden */
+    z-index: 100; /* Make sure it's on top of other elements */
+    transition: opacity 0.3s ease; /* Smooth fade-in effect */
+    pointer-events: none; /* Prevent it from blocking other interactions */
+    max-width: 250px; /* Prevent the tooltip from becoming too wide */
+    word-wrap: break-word; /* Ensure the text wraps inside the tooltip */
+  }
   
   /* Grid layout for the tooltip content */
   .info {
