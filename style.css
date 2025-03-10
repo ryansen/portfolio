@@ -227,16 +227,24 @@ path {
   }
   
   /* Hover effect on the dots */
-  circle {
-    transition: 200ms;
-    transform-origin: center;
-    transform-box: fill-box;
+/* Hover effect on the dots */
+circle {
+  transition: r 200ms ease-out, transform 200ms ease-out;
+  transform-origin: center;
+  transform-box: fill-box;
+
+  @starting-style {
+      r: 0; /* Ensures circles start with zero radius */
   }
-  
-  circle:hover {
-    transform: scale(1.5);
-    fill: orange;
-  }
+
+  transition: all 200ms, r calc(var(--r) * 100ms); /* Smooth scaling */
+}
+
+/* Hover effect */
+circle:hover {
+  transform: scale(1.5);
+  fill: orange;
+}
   dl.info {
     /* ... other styles ... */
     transition-duration: 500ms;
@@ -251,74 +259,186 @@ path {
     fill: #ff6b6b;
   }
 
- /* Center the filter UI and align elements horizontally */
-#filter-ui {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  width: 100%;
-  max-width: 600px; /* Adjust width as needed */
-  margin: 20px auto; /* Centering */
-}
-
-/* Ensure label stays on the left */
-#filter-ui label {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* Style the time display to align right */
-#selected-time {
-  margin-left: auto; /* Push it all the way to the right */
-  font-size: 14px; /* Make the font slightly smaller */
-  font-family: "Arial", sans-serif;
-  color: #333;
-  background: white;
-  padding: 3px 6px; /* Reduce padding for a smaller box */
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Style the slider */
+  #filter-ui {
+    display: flex;
+    align-items: center; /* Align label, slider, and time */
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes the full width */
+    max-width: 1000px; /* Set a reasonable max width */
+    margin: 20px auto; /* Center it */
+  }
+  
+  /* Ensure label stays on the left */
+  #filter-ui label {
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0; /* Prevent it from shrinking */
+  }
+  
+  /* Adjust slider width */
+  #time-slider {
+    flex-grow: 1; /* Make it take available space */
+    width: 100%; /* Use full width of the container */
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  /* Style the time display to align right */
+  #selected-time {
+    margin-left: 10px; /* Add space between slider and time */
+    font-size: 14px;
+    background: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+  }
+  
+/* Style the slider track */
 #time-slider {
-  flex: 1; /* Allow it to expand */
-  -webkit-appearance: none; /* Fix for Safari */
+  flex: 1;
+  -webkit-appearance: none; /* Remove default styles for Safari */
   appearance: none;
-  height: 6px;
-  background: #ddd;
-  border-radius: 3px;
+  height: 8px; /* Slightly thicker track */
+  background: rgba(0, 0, 255, 0.3); /* More opaque blue background */
+  border-radius: 4px;
   outline: none;
-  cursor: pointer; /* Ensure it's draggable */
+  cursor: pointer;
   transition: background 0.3s;
 }
 
-/* Slider thumb (handle) */
+/* Style the slider thumb (button) */
 #time-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Fix for Safari */
+  -webkit-appearance: none;
   appearance: none;
-  width: 14px; /* Slightly smaller */
-  height: 14px;
-  background: #007bff; /* Blue color */
+  width: 16px; /* Increase size for better visibility */
+  height: 16px;
+  background: steelblue; /* Solid blue color */
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
 }
 
 #time-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  background: #007bff;
+  width: 16px;
+  height: 16px;
+  background: steelblue; /* Solid blue color */
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s, background 0.2s;
 }
 
-/* Hover effect on slider */
+/* Hover and active effects */
 #time-slider:hover {
-  background: #ccc;
+  background: rgba(0, 0, 255, 0.5); /* Slightly more opaque on hover */
 }
 
 #time-slider:active::-webkit-slider-thumb {
-  transform: scale(1.1);
-  background: #0056b3; /* Slightly darker on click */
+  transform: scale(1.2); /* Slightly enlarge when clicked */
+  background: steelblue; /* Darken when pressed */
 }
+
+.files {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+}
+
+.files dt {
+  grid-column: 1;
+  font-weight: bold;
+}
+
+.files dd {
+  grid-column: 2;
+  margin: 0;
+  text-align: right;
+}
+.line {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+/* Ensure dots wrap and are tightly packed */
+dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
+}
+
+/* Style for file names and line count */
+dt {
+  font-weight: bold;
+  grid-column: 1;
+}
+
+dt small {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+#scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+/* feel free to play with this to make your scrolly more seemless with your plot */
+#scroll-container {
+  grid-column: 1;
+  position: relative;
+  width: 95%;
+  height: 350px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+#chart {
+  grid-column: 2;
+}
+
+#spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none; /* transparent */
+  pointer-events: none;
+}
+
+#items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.item {
+  height: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+}
+

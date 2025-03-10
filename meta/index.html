@@ -9,6 +9,47 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portfolio - Meta</title>
+        <style>
+          body {
+            max-width: min(120ch, 80vw);
+          }
+          /* Ensure scrollytelling layout prioritizes text over the scatterplot */
+          #scrollytelling {
+            display: grid;
+            grid-template-columns: 3fr 2fr; /* Prioritize scrolly text over scatterplot */
+            column-gap: 3rem; /* More space between scrolly and scatterplot */
+            max-width: min(160ch, 95vw); /* Wider scrolly */
+          }
+          #scroll-container {
+            width: 100%; /* Take full available width */
+            max-width: 95%; /* Ensure it’s almost the entire grid column */
+            height: 550px; /* Give it more vertical space */
+            overflow-y: auto;
+            padding: 1.5rem;
+            border: 1px solid #ccc;
+            background: white;
+            font-size: 1.2rem; /* Increase readability */
+            line-height: 1.6; /* More spacing between lines */
+          }
+          
+          #chart {
+            max-width: 100%; /* Allow responsiveness */
+            width: 100%; /* Keep inside its grid column */
+            height: auto; /* Let it adjust dynamically */
+          }
+/* Adjust spacing for better balance */
+#scrollytelling > div {
+  padding: 1.5rem;
+}
+
+#items-container p {
+  font-size: 1.2rem; /* Larger text */
+  max-width: 100%;
+  word-wrap: break-word;
+  margin-bottom: 1.5rem;
+}
+
+        </style>
     </head>
 <body>
     <h1> Meta </h1>
@@ -19,8 +60,13 @@
       <input type="range" id="time-slider" min="0" max="100" value="100">
       <time id="selected-time"></time>
     </div>
+    <h2>Files Affected</h2>
+    <dl class="files"></dl>
     <h2>Commits by time of day</h2>
-    <div id="chart"></div>
+    <div id="scrollytelling">
+      <!-- our old scatterplot div -->
+      <div id="chart"></div>
+  </div>
     <div></div>
     <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt>
